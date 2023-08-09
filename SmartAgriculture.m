@@ -11,15 +11,15 @@ C=[c1 -c2];
 setlmis([]) 
 p = lmivar(1,[1 1]);    % 1x1 sym
 y = lmivar(1,[1 1]);    % 1x1 
-gamma=0.94; % Feasible çýkan en küçük deðere kadar deneye yanýla bulmaya çalýþ!!!
+gamma=0.94; % Feasible çýkan en küçük deðere kadar bulmaya çalýþ!!!
 
 lmiterm([-1 1 1 p],1,1);        % 0 < p
 lmiterm([2 1 1 p],-1,a,'s');    % -2ap < 0
 lmiterm([2 1 1 y],-1,1,'s');    % -2ap-2y < 0
-lmiterm([2 1 2 0],C);         % C < 0
+lmiterm([2 1 2 0],C);           % C < 0
 lmiterm([2 1 3 p],1,1);         % p < 0
-lmiterm([2 2 2 0],-gamma^2);  % -gamma^2*I < 0
-lmiterm([2 3 3 0],-1);        % -1 < 0
+lmiterm([2 2 2 0],-gamma^2);    % -gamma^2*I < 0
+lmiterm([2 3 3 0],-1);          % -1 < 0
 lmis = getlmis;
 
 [tmin,xfeas] = feasp(lmis);
@@ -32,8 +32,8 @@ k=y/p;
 t=0:0.01:10;
 w=[exp(-(t-2).^2)+exp(-(t-6).^2);
    ((t-4).^2+1).^(-1)+((t-8).^2+1).^(-1)];
-x0=[10;8;6;-6;-8;-10]; % randn(5,1);
-x=zeros(6,length(t));
+x0=[10;8;6;4;2;-2;-4;-6;-8;-10];
+x=zeros(length(x0),length(t));
 xCLS=x;
 for i=1:length(t)
     x(:,i)=exp(-a*t(i))*x0+C*w(:,i);
@@ -43,7 +43,6 @@ end
 figure
 subplot(1,2,1);
 plot(t,x);
-%axis([0 10 -0.2 0.2])
 title('Açýk Çevrim Sistemi')
 xlabel('Zaman (saat)')
 ylabel('Nem farký (mm)')
