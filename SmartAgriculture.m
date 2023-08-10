@@ -2,7 +2,6 @@ clear all
 close all
 clc
 
-Mcr=5;
 a=0.1;
 c1=1.5;
 c2=0.7;
@@ -11,7 +10,7 @@ C=[c1 -c2];
 setlmis([]) 
 p = lmivar(1,[1 1]);    % 1x1 sym
 y = lmivar(1,[1 1]);    % 1x1 
-gamma=0.94; % Feasible çýkan en küçük deðere kadar bulmaya çalýþ!!!
+gamma=0.94; % Feasible Ã§Ã½kan en kÃ¼Ã§Ã¼k deÃ°ere kadar bulmaya Ã§alÃ½Ã¾!!!
 
 lmiterm([-1 1 1 p],1,1);        % 0 < p
 lmiterm([2 1 1 p],-1,a,'s');    % -2ap < 0
@@ -43,18 +42,18 @@ end
 figure
 subplot(1,2,1);
 plot(t,x);
-title('Açýk Çevrim Sistemi')
+title('AÃ§Ã½k Ã‡evrim Sistemi')
 xlabel('Zaman (saat)')
-ylabel('Nem farký (mm)')
+ylabel('Nem farkÃ½ (mm)')
 set(gca,'fontsize',35)
 set(findobj(gca, 'Type', 'Line', 'Linestyle', '--'), 'LineWidth', 2);
 
 subplot(1,2,2);
 plot(t,xCLS);
 hold on
-title('Kapalý Çevrim Sistemi')
+title('KapalÃ½ Ã‡evrim Sistemi')
 xlabel('Zaman (saat)')
-ylabel('Nem farký (mm)')
+ylabel('Nem farkÃ½ (mm)')
 set(gca,'fontsize',35)
 set(findobj(gca, 'Type', 'Line', 'Linestyle', '--'), 'LineWidth', 2);
 
