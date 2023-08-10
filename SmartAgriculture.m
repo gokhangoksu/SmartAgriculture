@@ -59,7 +59,7 @@ set(gca,'fontsize',35)
 set(findobj(gca, 'Type', 'Line', 'Linestyle', '--'), 'LineWidth', 2);
 
 figure
-u=k*x;
+u=-k*x;
 hold on
 plot(t,u);
 plot(t,30*ones(size(t)),'r--');
